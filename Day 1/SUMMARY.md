@@ -10,9 +10,11 @@ Before a chip is manufactured, its design must be created and verified using spe
 * **Design:** The Verilog code that describes the intended logic of your circuit. It's the blueprint.
 * **Testbench:** A separate Verilog file that acts as an automated tester, sending a sequence of inputs to your design to confirm it behaves correctly.
 * **Simulator:** A software tool that runs the testbench and simulates the design's response, predicting how the physical circuit will behave.
+
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/Simulator_Testbench.png">
 </div>
+
 
  ---
  
@@ -29,7 +31,7 @@ Icarus Verilog (iverilog) is an open-source tool that compiles and simulates Ver
 The design along with testbench compiled using iverilog to generate a `.vcd` file which further can be analysed by GTKWave.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/rtl%20flow.png">
 </div>
 
 **Design file (`good_mux.v`):**
@@ -80,7 +82,7 @@ endmodule
 
 **Run Simulation:**
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/iverilog%20command.jpeg">
 </div>
 
 ---
@@ -91,12 +93,12 @@ Allows users to inspect signals over time, debug designs, and verify circuit beh
 
 **Visualization Command**
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/gtkwave%20command.jpeg">
 </div>
 
 **GTKWAVE Output (`good_mux.v`):**
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+	<img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/gtkwave%20output.jpeg">
 </div>
 
 ---
@@ -106,7 +108,8 @@ Yosys is an open-source Synthesizer for Verilog synthesis and RTL design.
 It converts Verilog designs into gate-level netlists.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+	<img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/yosys_flow.png">
+	<img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/netlist%20flow.png">
 </div>
 
 **Execution Command**
@@ -122,7 +125,7 @@ yosys
 
 **Gate-Level Structure (`good_mux.v`)**
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93927b96-df80-4da5-b801-284fc2cc6757" alt="Design and Testbench Interaction" width="70%">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/netlist.jpeg">
 </div>
 
 **Netlist (`good_mux.v`):**
