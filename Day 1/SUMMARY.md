@@ -21,7 +21,7 @@ Before a chip is manufactured, its design must be created and verified using spe
 ## Setting Up Workshop files
 First, clone the Git repository, which contains all the necessary design, testbench, and library files for the workshop.
 ```
-git clone [https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git](https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git)
+git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 ```
 
 ---
