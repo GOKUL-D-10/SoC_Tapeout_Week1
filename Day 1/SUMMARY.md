@@ -4,7 +4,6 @@ Welcome to Day 1! we'll dive into digital design using Verilog, simulate our wor
 
 ---
 
-
 ## The Core Components: Design, Testbench, & Simulator
 Before a chip is manufactured, its design must be created and verified using specific code and software tools.
 
@@ -16,10 +15,8 @@ Before a chip is manufactured, its design must be created and verified using spe
   <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/Simulator_Testbench.png">
 </div>
 
-
  ---
 
- 
 ## Setting Up Workshop files
 First, clone the Git repository, which contains all the necessary design, testbench, and library files for the workshop.
 ```
@@ -28,7 +25,6 @@ git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 
 ---
 
-
 ## IVerilog
 Icarus Verilog (iverilog) is an open-source tool that compiles and simulates Verilog HDL designs.
 The design along with testbench compiled using iverilog to generate a `.vcd` file which further can be analysed by GTKWave.
@@ -36,7 +32,7 @@ The design along with testbench compiled using iverilog to generate a `.vcd` fil
 <div align="center">
   <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/rtl%20flow.png">
 </div>
-
+<br>
 
 **Design file (`good_mux.v`):**
 ```
@@ -50,7 +46,7 @@ begin
 end
 endmodule
 ```
-
+<br>
 
 **Testbench file (`tb_good_mux.v`):**
 ```
@@ -84,7 +80,7 @@ always #10 i0 = ~i0;
 always #55 i1 = ~i1;
 endmodule
 ```
-
+<br>
 
 **Run Simulation:**
 <div align="center">
@@ -101,15 +97,13 @@ Allows users to inspect signals over time, debug designs, and verify circuit beh
 <div align="center">
   <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/gtkwave%20command.jpeg">
 </div>
-
+<br>
 
 **GTKWAVE Output (`good_mux.v`):**
 <div align="center">
 	<img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/gtkwave%20output.jpeg">
 </div>
-
 ---
-
 
 ## YOSYS
 Yosys is an open-source Synthesizer for Verilog synthesis and RTL design.
@@ -119,7 +113,7 @@ It converts Verilog designs into gate-level netlists.
 	<img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/yosys_flow.png">
 	<img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/netlist%20flow.png">
 </div>
-
+<br>
 
 **Execution Command**
 ```
@@ -131,13 +125,13 @@ yosys
 -> show
 -> write_verilog -noattr good_mux_netlist.v
 ```
-
+<br>
 
 **Gate-Level Structure (`good_mux.v`)**
 <div align="center">
   <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%201/images/netlist.jpeg">
 </div>
-
+<br>
 
 **Netlist (`good_mux.v`):**
 ```
@@ -170,7 +164,6 @@ endmodule
 ```
 
 ---
-
 
 ## Summary
 * ✅ Simulated Verilog design using iverilog
