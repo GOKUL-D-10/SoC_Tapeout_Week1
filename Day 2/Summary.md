@@ -118,6 +118,7 @@ write_verilog -noattr multiple_modules_hier.v
 <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/images/multiple_module_netlist.png?raw=true" width="70%"/>
 </div>
 <br>
+
 ✅ **Advantages:** Easy debug 🐞, modular 🔗<br>
 ❌ **Disadvantages:** Limited optimization ⚠️
 
@@ -145,6 +146,7 @@ write_verilog -noattr multiple_modules_flat.v
 <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/images/flat_netlist.png?raw=true" width="70%">
 </div>
 <br>
+
 ✅ **Advantages:** Better optimization ⚡<br>
 ❌ **Disadvantages:** Harder debugging 🐛, runtime ⏳
 
