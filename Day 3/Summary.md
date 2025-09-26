@@ -1,3 +1,48 @@
+# 🌟 Day 3 of the SoC Workshop! 🎉
+
+## 🕒 Topic: Combinational & Sequential Optimization ⚡💻
+
+Welcome to **Day 3** of our SoC design journey 🚀✨.<br>
+we’ll explore **combinational logic optimization** 🧩, **sequential logic optimization** 🔄, and **handling unused outputs** 🗑️ for smarter, faster RTL designs ⚡.
+
+By the end of this session, you will:
+
+✅ Optimize combinational circuits using **constant propagation & Boolean simplification** 🔧💡<br>
+
+✅ Synthesize sequential circuits with **flip-flop mapping and constant propagation** ⏱️🔗<br>
+
+✅ Learn how to **remove unused outputs** to save **area & power** 🏗️⚡<br>
+
+✅ Analyze optimized **netlists & waveforms** with **GTKWave** 📊🎨
+
+---
+
+## 📂 Contents
+
+- ⚡ [**Introduction to Optimization**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-introduction-to-optimization)
+    - 🔹 [Combinational Logic Optimization](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#1%EF%B8%8F%E2%83%A3-combinational-logic-optimization)
+    - 🔹 [Sequential Logic Optimization](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#2%EF%B8%8F%E2%83%A3-sequential-logic-optimization)
+- 🛠 [**Combinational Logic Optimization Lab**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-combinational-logic-optimization-lab)
+  	- 🎟️ [Synthesis Command](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-1-synthesis-command)
+    - 🧮 [opt_check.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-2-opt_checkv-)
+    - 🧮 [opt_check2.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-3-opt_check2-)
+    - 🧮 [opt_check3.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-4-opt_check3-)
+    - 🧮 [opt_check4.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-5-opt_check4-)
+    - 🔗 [multiple_module_opt.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-6-multiple_module_opt-%EF%B8%8F)
+    - 🔗 [multiple_module_opt2.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-7-multiple_module_opt2-%EF%B8%8F)
+- 🔄 [**Sequential Logic Optimization Lab**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-sequential-logic-optimization)
+  	- 🎟️ [Synthesis Command](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-1-synthesis-command-1)
+    - ⏱ [dff_const1.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-2-dff_const1v-%EF%B8%8F)
+    - ⏱ [dff_const2.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-3-dff_const2v-%EF%B8%8F)
+    - ⏱ [dff_const3.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-4-dff_const3v-)
+    - ⏱ [dff_const4.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-5-dff_const4v-)
+    - ⏱ [dff_const5.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-6-dff_const5v-)
+- 🌀 [**Sequential Optimization for Unused Outputs**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-sequential-optimization-for-unused-outputs)
+    - 🔢 [counter_opt.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-1-counter_optv-%EF%B8%8F)
+    - 🏗 [counter_opt2.v](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#-2-counter_opt2v-)
+- 📝 [**Summary**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/Summary.md#summary)
+  
+---
 ## 🧩 Introduction to Optimization
 
 Optimization is the process of improving a digital design to achieve **efficient performance**, **reduced area**, and **lower power consumption**.
