@@ -255,3 +255,219 @@ endmodule
 <p align="center">
   <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_module_opt2.png" width="80%"/>
 </p>
+
+
+---
+## 🔄 Sequential Logic Optimization
+
+In this session, we explore **sequential optimization** 🕒⚡ using Yosys. By applying constant propagation and simplification on **flip-flops**, we achieve **optimized designs** that are smaller, faster, and more efficient.
+
+---
+
+### 🔹 1. Synthesis Command
+
+Commands used for **sequential design synthesis** in Yosys.
+
+This flow helps map flip-flops into the technology library 🔧📦.
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog design_name.v
+synth -top module_name
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+
+```
+
+**Command Explanation 📝**
+
+- `yosys` → Launch synthesis tool ⚙️
+- `read_liberty` → Import cell library 📚
+- `read_verilog` → Load design file 📄
+- `synth -top` → Synthesize top-level module 🎯
+- `dfflibmap` → Map DFFs to library flip-flops ⏱️
+- `abc -liberty` → Optimize & tech map using ABC 🔗
+- `show` → Display optimized netlist 🖼️
+
+---
+
+### 🔹 2. dff_const1.v 🕹️
+
+📌 Flip-flop always outputs **constant ‘1’** after reset.
+
+GTKWave shows reset clears to `0`, then holds `1`.
+
+```verilog
+module dff_const1(input clk, input reset, output reg q);
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b0;
+	else
+		q <= 1'b1;
+end
+endmodule
+```
+
+📊 **GTKWave Analysis:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/GTKWave_dff_const1.png" width="80%"/>
+</p>
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_dff_const1.png" width="80%"/>
+</p>
+
+---
+
+### 🔹 3. dff_const2.v 🎛️
+
+📌 Output is **always 1**, regardless of reset or clock.
+
+Yosys optimizes this to a constant wire 🟢.
+
+```verilog
+module dff_const2(input clk, input reset, output reg q);
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b1;
+	else
+		q <= 1'b1;
+end
+endmodule
+```
+
+📊 **GTKWave Analysis:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/GTKWave_dff_const2.png" width="80%"/>
+</p>
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_dff_const2.png" width="80%"/>
+</p>
+
+---
+
+### 🔹 4. dff_const3.v ⏳
+
+📌 Two registers interact: one keeps constant `1`, other follows delayed update.
+
+GTKWave shows sequential dependency in action 🔄.
+
+```verilog
+module dff_const3(input clk, input reset, output reg q);
+reg q1;
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+	begin
+		q <= 1'b1;
+		q1 <= 1'b0;
+	end
+	else
+	begin
+		q1 <= 1'b1;
+		q <= q1;
+	end
+end
+endmodule
+```
+
+📊 **GTKWave Analysis:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/GTKWave_dff_const3.png" width="80%"/>
+</p>
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_dff_const3.png" width="80%"/>
+</p>
+
+---
+
+### 🔹 5. dff_const4.v ⚡
+
+📌 Both registers reset to `1` and always stay at `1`.
+
+This collapses into constant logic output 🚀.
+
+```verilog
+module dff_const4(input clk, input reset, output reg q);
+reg q1;
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+	begin
+		q <= 1'b1;
+		q1 <= 1'b1;
+	end
+	else
+	begin
+		q1 <= 1'b1;
+		q <= q1;
+	end
+end
+endmodule
+```
+
+📊 **GTKWave Analysis:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/GTKWave_dff_const4.png" width="80%"/>
+</p>
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_dff_const4.png" width="80%"/>
+</p>
+
+---
+
+### 🔹 6. dff_const5.v 🔐
+
+📌 Reset clears both registers to `0`, but sequentially they stabilize to `1`.
+
+GTKWave confirms one-cycle delay before output updates ⏱️.
+
+```verilog
+module dff_const5(input clk, input reset, output reg q);
+reg q1;
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+	begin
+		q <= 1'b0;
+		q1 <= 1'b0;
+	end
+	else
+	begin
+		q1 <= 1'b1;
+		q <= q1;
+	end
+end
+endmodule
+```
+
+📊 **GTKWave Analysis:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/GTKWave_dff_const5.png" width="80%"/>
+</p>
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_dff_const5.png" width="80%"/>
+</p>
