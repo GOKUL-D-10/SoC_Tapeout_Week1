@@ -133,7 +133,7 @@ endmodule
 📷 **Synthesized Netlist:**
 
 <p align="center">
-  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check.png" width="400"/>
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check.png" width="80%"/>
 </p>
 
 ---
@@ -153,7 +153,7 @@ endmodule
 📷 **Synthesized Netlist:**
 
 <p align="center">
-  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check2.png" width="400"/>
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check2.png" width="80%"/>
 </p>
 
 ---
@@ -173,7 +173,7 @@ endmodule
 📷 **Synthesized Netlist:**
 
 <p align="center">
-  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check3.png" width="400"/>
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check3.png" width="80%"/>
 </p>
 
 ---
@@ -193,7 +193,7 @@ endmodule
 📷 **Synthesized Netlist:**
 
 <p align="center">
-  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check4.png" width="400"/>
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check4.png" width="80%"/>
 </p>
 
 ---
@@ -225,7 +225,7 @@ endmodule
 📷 **Synthesized Netlist:**
 
 <p align="center">
-  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_modules_opt.png" width="400"/>
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_modules_opt.png" width="80%"/>
 </p>
 
 ---
@@ -253,5 +253,5 @@ endmodule
 📷 **Synthesized Netlist:**
 
 <p align="center">
-  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_module_opt2.png" width="400"/>
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_module_opt2.png" width="80%"/>
 </p>
