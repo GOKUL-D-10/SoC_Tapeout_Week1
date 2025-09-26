@@ -60,3 +60,198 @@ Optimized result:
     - Consider 3 flip-flops with combinational circuits `A` and `B` between them.
     - Delay: `A = 5ns`, `B = 3ns` → Clock frequency differs (`A = 200MHz`, `B = 333MHz`)
     - Shift logic from `A` to `B` to equalize delay (`4ns` each) → unified clock frequency (`250MHz`).
+
+---
+## ⚡ Combinational Logic Optimization Lab
+
+In this lab, we synthesize **combinational design files** with optimization techniques using **Yosys**.
+
+We’ll explore how **constant propagation** and **Boolean optimization** simplify logic into smaller, faster, and more efficient netlists 🔧✨.
+
+---
+
+### 🔹 1. Synthesis Command
+
+We use **Yosys** for synthesis. Below are the command flows for **single module** and **multiple module** synthesis.
+
+🛠️ **For Single Module**
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog design_name.v
+synth -top module_name
+opt_clean -purge
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+**Explanation of Commands 📝**
+
+- `yosys` → Start the synthesis tool ⚙️
+- `read_liberty` → Load technology library 📚
+- `read_verilog` → Load design file 📄
+- `synth -top` → Run synthesis on top module 🎯
+- `opt_clean -purge` → Remove unused wires, nets, or cells 🧹
+- `abc -liberty` → Technology mapping using target library 🔗
+- `show` → Display optimized netlist diagram 🎨
+
+---
+
+🛠️ **For Multiple Modules**
+
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog design_name.v
+synth -top main_module_name
+flatten
+opt_clean -purge
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+**Explanation of Commands 📝**
+
+- `flatten` → Merge hierarchical modules into a single module 🏗️
+- Rest of commands same as **single module synthesis**.
+
+---
+
+### 🔹 2. opt_check.v 🧮
+
+📌 A simple design showing **direct constant optimization**.
+
+Equation simplifies from `y = a?b:0` → `y = ab`.
+
+```verilog
+module opt_check (input a , input b , output y);
+	assign y = a?b:0;
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check.png" width="400"/>
+</p>
+
+---
+
+### 🔹 3. opt_check2 🔗
+
+📌 Shows how **distributive law** helps reduce circuit size.
+
+Equation reduces to `y = a + b`.
+
+```verilog
+module opt_check2 (input a , input b , output y);
+	assign y = a?1:b;
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check2.png" width="400"/>
+</p>
+
+---
+
+### 🔹 4. opt_check3 🔄
+
+📌 Nested ternary operations simplified by constant propagation.
+
+The logic shrinks down to a minimal netlist.
+
+```verilog
+module opt_check3 (input a , input b, input c , output y);
+	assign y = a?(c?b:0):0;
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check3.png" width="400"/>
+</p>
+
+---
+
+### 🔹 5. opt_check4 🧩
+
+📌 A more **complex nested logic** example using multiple ternary operators.
+
+Synthesis reveals huge simplifications in gate-level form.
+
+```verilog
+module opt_check4 (input a , input b , input c , output y);
+ assign y = a?(b?(a & c ):c):(!c);
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_opt_check4.png" width="400"/>
+</p>
+
+---
+
+### 🔹 6. multiple_module_opt 🏗️
+
+📌 Demonstrates synthesis on **multiple submodules**.
+
+Hierarchical design is **flattened and optimized** automatically.
+
+```verilog
+module sub_module1(input a , input b , output y);
+ assign y = a & b;
+endmodule
+
+module sub_module2(input a , input b , output y);
+ assign y = a^b;
+endmodule
+
+module multiple_module_opt(input a , input b , input c , input d , output y);
+wire n1,n2,n3;
+sub_module1 U1 (.a(a) , .b(1'b1) , .y(n1));
+sub_module2 U2 (.a(n1), .b(1'b0) , .y(n2));
+sub_module2 U3 (.a(b), .b(d) , .y(n3));
+assign y = c | (b & n1);
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_modules_opt.png" width="400"/>
+</p>
+
+---
+
+### 🔹 7. multiple_module_opt2 ⚙️
+
+📌 Another multi-module design showing **hierarchy simplification**.
+
+Unused logic is cleaned up by **opt_clean -purge**.
+
+```verilog
+module sub_module(input a , input b , output y);
+ assign y = a & b;
+endmodule
+
+module multiple_module_opt2(input a , input b , input c , input d , output y);
+wire n1,n2,n3;
+sub_module U1 (.a(a) , .b(1'b0) , .y(n1));
+sub_module U2 (.a(b), .b(c) , .y(n2));
+sub_module U3 (.a(n2), .b(d) , .y(n3));
+sub_module U4 (.a(n3), .b(n1) , .y(y));
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_multiple_module_opt2.png" width="400"/>
+</p>
