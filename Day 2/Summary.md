@@ -14,23 +14,23 @@ By the end of this session, you will:
 ---
 ## 📂 Contents
 
-- ⚡ [**Introduction to Timing .lib**](Introduction-to-Timing-.lib)
-    - 📘 [SKY130 PDK](SKY130-PDK)
-    - 🔍 [Decoding sky130_fd_sc_hd__tt_025C_1v80.lib](Decoding-sky130-fd-sc-hd-tt-025C-1v80.lib)
-    - 📝 [Units and Exploration](Units-and-Exploration)
-- 🛠 [**Hierarchical vs Flat Synthesis**](Hierarchical-vs-Flat-Synthesis)
-    - 🏗 [Hierarchical Synthesis](Hierarchical-Synthesis)
-    - 🧩 [Flattened Synthesis]([Flattened-Synthesis)
-    - ⚖️ [Key Differences & CMOS Tip](Key-Differences-&-CMOS-Tip)
-- 🔹 [**Flip-Flop Coding Styles**](Flip-Flop-Coding-Styles)
-    - ⏱ [Async Reset DFF](Async-Reset-DFF)
-    - 🔴 [Async Set DFF](Async-Set-DFF)
-    - ⏹ [Sync Reset DFF](Sync-Reset-DFF)
-    - 🔄 [Combined Async + Sync Reset DFF](Combined-Async-+-Sync-Reset-DFF)
-- 🖥 [**Optimizations in RTL**](Optimizations-in-RTL)
-    - ✖ [Multiplier by 2]([Multiplier-by-2)
-    - ✖ [Multiplier by 9]([Multiplier-by-9)
-- 📝 [**Summary**](Summary)
+- ⚡ [**Introduction to Timing .lib**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-introduction-to-timing-lib)
+    - 📘 [SKY130 PDK](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-sky130-pdk)
+    - 🔍 [Decoding sky130_fd_sc_hd__tt_025C_1v80.lib](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-decoding-sky130_fd_sc_hd__tt_025c_1v80lib)
+    - 📝 [Units and Exploration](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-units-and-exploration)
+- 🛠 [**Hierarchical vs Flat Synthesis**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#hierarchical-vs-flat-synthesis)
+    - 🏗 [Hierarchical Synthesis](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-hierarchical-vs-flat-synthesis)
+    - 🧩 [Flattened Synthesis](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-flattened-synthesis)
+    - ⚖️ [Key Differences & CMOS Tip](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#%EF%B8%8F-key-differences--cmos-tip)
+- 🔹 [**Flip-Flop Coding Styles**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-flip-flop-coding-styles)
+    - ⏱ [Async Reset DFF](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-d-flip-flop-with-asynchronous-reset)
+    - 🔴 [Async Set DFF](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-d-flip-flop-with-asynchronous-set)
+    - ⏹ [Sync Reset DFF](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-d-flip-flop-with-synchronous-reset)
+    - 🔄 [Combined Async + Sync Reset DFF](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-d-flip-flop-with-both-sync--async-reset)
+- 🖥 [**Optimizations in RTL**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-optimizations-in-rtl)
+    - ✖ [Multiplier by 2](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#2%EF%B8%8F%E2%83%A3-multiplier-by-2)
+    - ✖ [Multiplier by 9](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#9%EF%B8%8F%E2%83%A3-multiplier-by-9)
+- 📝 [**Summary**](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%202/Summary.md#-summary)
 
 ---
 ## ⚡ Introduction to Timing .lib
@@ -212,7 +212,7 @@ endmodule
 ### 🔴 D Flip-Flop with Asynchronous Set
 - Set works **immediately**, ignoring the clock ⏰✅.
 - Forces output `q` to `1` instantly when set is high 🟩⚡.
-- 
+
 ```verilog
 module dff_async_set (input clk, input async_set, input d, output reg q);
   always @ (posedge clk, posedge async_set)
@@ -353,7 +353,7 @@ endmodule
 <br>
 
 ---
-## 🗂️ NOTES & TIPs
+## 🗂️ Notes & Tips
 - ⚡ **Use `dfflibmap`** after synthesis to map your RTL flip-flops to technology-specific cells.
 - 📚 Always **read the Liberty library** first (`read_liberty -lib …`) to guide the synthesizer.
 - 🖥 For simulation, compile both **RTL and testbench** in Icarus Verilog before viewing in GTKWave.
