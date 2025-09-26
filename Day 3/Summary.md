@@ -64,7 +64,7 @@ Optimized result:
 ---
 ## ⚡ Combinational Logic Optimization Lab
 
-In this lab, we synthesize **combinational design files** with optimization techniques using **Yosys**.
+we synthesize **combinational design files** with optimization techniques using **Yosys**.
 
 We’ll explore how **constant propagation** and **Boolean optimization** simplify logic into smaller, faster, and more efficient netlists 🔧✨.
 
@@ -260,7 +260,7 @@ endmodule
 ---
 ## 🔄 Sequential Logic Optimization
 
-In this session, we explore **sequential optimization** 🕒⚡ using Yosys. By applying constant propagation and simplification on **flip-flops**, we achieve **optimized designs** that are smaller, faster, and more efficient.
+we explore **sequential optimization** 🕒⚡ using Yosys. By applying constant propagation and simplification on **flip-flops**, we achieve **optimized designs** that are smaller, faster, and more efficient.
 
 ---
 
@@ -471,3 +471,85 @@ endmodule
 <p align="center">
   <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_dff_const5.png" width="80%"/>
 </p>
+
+---
+## 🌀 Sequential Optimization for Unused Outputs
+
+we explore how **unused outputs in sequential circuits** can be optimized 🛠️.
+
+Yosys cleverly removes unnecessary flip-flops, keeping only what’s required ⚡.
+
+---
+
+### 🔹 1. counter_opt.v ⏱️
+
+📌 Only the **least significant bit** (`c[0]`) is used.
+
+Thus, the design reduces to a **toggle flip-flop** 🔄.
+
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = count[0];
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+endmodule
+```
+
+📊 **GTKWave Analysis:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/GTKWave_Counter_opt.png" width="80%"/>
+</p>
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_counter_opt.png" width="80%"/>
+</p>
+
+---
+
+### 🔹 2. counter_opt2.v 🧮
+
+📌 Here, **all 3 counter bits** are needed to detect `count = 100`.
+
+So optimization **retains the full counter logic** 🏗️.
+
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = (count[2:0] == 3'b100);
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+endmodule
+```
+
+📷 **Synthesized Netlist:**
+
+<p align="center">
+  <img src="https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%203/images/Netlist_counter_opt2.png" width="80%"/>
+</p>
+
+---
+
+## Summary
+Day 3 focused on **optimizing digital designs** to reduce area, power, and improve performance.
+
+- **Combinational Optimization:** Simplified logic using **constant propagation** and **Boolean optimization**, observed netlist improvements in `opt_check` designs 🧩.
+- **Sequential Optimization:** Optimized D flip-flops with constants (`dff_const` series) and reduced unnecessary logic 🔄.
+- **Unused Outputs:** Removed unneeded flip-flops in counters (`counter_opt`) to save area and power ⚡.
+
+✅ **Takeaway:** Optimization makes designs **smaller, faster, and more efficient**, preparing SoC circuits for real-world applications.
