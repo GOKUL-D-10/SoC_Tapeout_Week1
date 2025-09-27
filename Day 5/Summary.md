@@ -167,7 +167,7 @@ endmodule
 
 ---
 
-![If](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/ifwave.png)
+![If](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/ifwave.png)
 
 ⚠️ **Observation:**
 
@@ -176,7 +176,7 @@ endmodule
 - Hence a D-Latch is Inferred
 
 ---
-![If](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/ifnet.png)
+![If](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/ifnet.png)
 
 
 ✅ **Best Practice:**
@@ -195,10 +195,10 @@ end
 
 ## Nested Incomplete If : 
 ### Verilog Code :
-![If2](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/if2code.png)
+![If2](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/if2code.png)
 
 ### Waveform Generated on Simulation of the above RTL Code :
-![If2](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/if2wave.png)
+![If2](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/if2wave.png)
 
 ---
 
@@ -210,7 +210,7 @@ end
 - Hence the Netlist will be :
 
 ### Netlist Generated :
-![If2](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/if2net.png)
+![If2](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/if2net.png)
   
 
 
@@ -243,7 +243,7 @@ Learn how incomplete or improperly used `case` statements in Verilog can lead to
     endmodule
 ```
 ### Waveform Generated for the RTL Code Simulation :
-![case](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/casewave.png)
+![case](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/casewave.png)
 
 ### ⚠️ Problem Description:
 
@@ -254,7 +254,7 @@ For sel = 2'b10 or 2'b11, y is not assigned, causing synthesis tools to infer a 
 This can lead to unintended memory behavior, functional mismatches, and timing hazards.
 
 ### Netlist Generated for the RTL Code :
-![case](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/casenet.png)
+![case](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/casenet.png)
 
 
 ✅ Solution – Add a Default Case:
@@ -303,7 +303,7 @@ end
 endmodule
 ```
 ### Waveform Generated on Simulation of the above RTL Code :
-![If2](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/badcasewave.png)
+![If2](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/badcasewave.png)
 
 ---
 
@@ -317,10 +317,10 @@ endmodule
 ### 🖼 Demo Images:
 
 Generated Netlist:
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/badcasenet.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/badcasenet.png)
 
 Netlist Simulation Result:
-![Simulation](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/bcnwave.png)
+![Simulation](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/bcnwave.png)
 
 ⚠️ Observation: The simulation shows unexpected retention of previous values when the input does not match explicit cases. This confirms the latch inference issue.
 
@@ -392,11 +392,11 @@ endmodule
 
 
 * Simulation Result:
-![Simulation](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/compcasewave.png)
+![Simulation](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/compcasewave.png)
 
 
 * Generated Netlist:
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/compcasenet.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/compcasenet.png)
 
 
 
@@ -464,7 +464,7 @@ endmodule
 
 ### 🖼 **Demo Image – Generated Netlist:**
 
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/partialnet.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/partialnet.png)
 
 > Observation: The netlist shows that x is inferred as a latch in the branch where it is not explicitly assigned. This is undesirable for combinational logic.
 
@@ -626,7 +626,7 @@ endmodule
 - The simulation waveform will illustrate how the **for loop selects one of the 4 inputs** (`i0–i3`) based on the **2-bit selector**.
 - At each toggle of `sel`, the output `y` reflects the **corresponding input line** ✅.
 - Each iteration of the loop is unrolled at synthesis, so **MUX behavior is clear and efficient** 🔬.
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/generatewave.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/generatewave.png)
 
 ---
 
@@ -637,7 +637,7 @@ endmodule
 - With **Yosys + GTKWave**, you can confirm:
     - Correct functionality via simulation.
     - The actual gate-level design in the netlist 🔍.
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/generatenet.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/generatenet.png)
 
 ---
 
@@ -715,7 +715,7 @@ No need to write 4 separate instantiations manually 🚀.
 - The waveform shows how the **input signal `i`** is routed to one of the **eight outputs (o0–o7)** depending on the **3-bit select line**.
 - At each change in `sel`, only one output goes **HIGH**, while others remain **LOW**.
 - Easy to verify correctness step by step.
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxwave.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/demuxwave.png)
   
 
 ### 🏗️ Netlist View 🖼️
@@ -723,7 +723,7 @@ No need to write 4 separate instantiations manually 🚀.
 - The synthesized netlist expands the **case-based conditional logic** into a network of gates.
 - Each output is properly mapped to the input based on the select bits.
 - This structure clearly highlights the **decoder-like expansion** required for DEMUX logic.
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxnet.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/demuxnet.png)
 ---
 
 ## 📌 1:8 DEMUX Using For Loop ♻️
@@ -733,7 +733,7 @@ No need to write 4 separate instantiations manually 🚀.
 - The waveform again shows only **one output active at a time**, depending on `sel`.
 - The **for loop version produces identical behavior** to the case-based DEMUX ✅.
 - Using GTKWave, you’ll see that as `sel` iterates, the selected output follows `i`.
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxgenwave.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/demuxgenwave.png)
 
 
 ### 🏗️ Netlist View 🖼️
@@ -741,7 +741,7 @@ No need to write 4 separate instantiations manually 🚀.
 - The for loop is **completely unrolled by the synthesis tool**.
 - Netlist explicitly shows **eight separate logic paths**, just like in the case-based version.
 - This demonstrates that **for loops don’t exist in hardware** — they’re just a compact way to describe repetitive logic.
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/demuxgennet.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/demuxgennet.png)
 ---
 
 ## ⚖️ Case vs For Loop – Quick Comparison
@@ -817,7 +817,7 @@ endmodule
 ---
 
 ### 🎬 **RTL Simulation View**
-![Netlist](https://github.com/Gowtham007007/Week-1_RISC-V_Tapeout/blob/main/Day_5/Images/rcatb.png)
+![Netlist](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%205/images/rcatb.png)
 
 - `sum = num1 + num2` (8-bit addition with 1-bit carry-out).
 - Ripple effect: carries propagate from LSB → MSB in sequence.
