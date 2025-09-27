@@ -42,7 +42,7 @@ By mastering these topics, you will **ensure your design is functionally correct
 
 In previous days, simulations were run with **RTL as the DUT**. In GLS, the **DUT is the synthesized netlist**.  
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/GLS.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/GLS.png)
 
 **Files Needed:**  
 
@@ -269,7 +269,7 @@ Open the MUX design file using GVim:
 gvim ternary_operator_mux.v
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/ternary_operator_mux.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/ternary_operator_mux.png)
 
 
 - This file implements a MUX using the **ternary operator (`? :`)**.
@@ -318,7 +318,7 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/ternary_op_gtkwave.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/ternary_op_gtkwave.png)
 
 ```bash
 # Write synthesized netlist
@@ -328,7 +328,7 @@ write_verilog -noattr ternary_operator_mux_net.v
 show
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/ternary_op_synthesis.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/ternary_op_synthesis.png)
 
 - The synthesized netlist (`ternary_operator_mux_net.v`) is now **mapped to actual standard cells**.
 
@@ -344,7 +344,7 @@ iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_
 gtkwave tb_ternary_operator_mux.vcd
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/ternary_op_after_GLS.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/ternary_op_after_GLS.png)
 
 
 - Include **primitive and standard cell models** for accurate GLS.  
@@ -365,7 +365,7 @@ Open the design file using GVim:
 gvim bad_mux.v
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/bad_mux.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/bad_mux.png)
 
 
 - Inspect the **MUX implementation** in the file.
@@ -386,7 +386,7 @@ gtkwave tb_bad_mux.vcd
 - `./a.out` → Runs the simulation.  
 - `gtkwave` → Opens waveform viewer to analyze signals.
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/bad_mux_gtkwave.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/bad_mux_GLS.png)
 
 ---
 
@@ -416,7 +416,7 @@ abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/bad_mux_gtkwave.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/bad_mux_gtkwave.png)
 
 ``` bash
 # Write synthesized netlist
@@ -425,7 +425,7 @@ write_verilog -noattr bad_mux_net.v
 # Visualize schematic
 show
 ```
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/bad_mux_synth.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/bad_mux_synth.png)
 
 - `bad_mux_net.v` → Synthesized **gate-level netlist** mapped to standard cells.
 
@@ -445,7 +445,7 @@ gtkwave tb_bad_mux.vcd
 - `bad_mux_net.v` → Synthesized netlist as the **DUT**.  
 - `gtkwave` → Visualizes waveform to ensure **behavior matches RTL simulation**.
 
-  ![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/bad_mux_GLS.png?raw=true)
+  ![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/bad_mux_GLS.png)
   
 
 ---
@@ -482,7 +482,7 @@ gtkwave tb_blocking_caveat.vcd
 
 ---
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/bloacking_caveat_gtkwave.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/bloacking_caveat_gtkwave.png)
 
 ## 🔹 Step 3: Synthesis
 
@@ -514,7 +514,7 @@ write_verilog -noattr blocking_caveat_net.v
 show
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/blocking_caveat_synth.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/blocking_caveat_synth.png)
 
 - `blocking_caveat_net.v` → Synthesized **gate-level netlist** mapped to standard cells.  
 - Use this netlist to check how **blocking assignments affect synthesis outputs**.
@@ -531,7 +531,7 @@ iverilog ../lib/verilog_model/primitives.v ../lib/verilog_model/sky130_fd_sc_hd_
 gtkwave tb_blocking_caveat.vcd
 ```
 
-![image alt](https://github.com/harishj123/RISC-V_Soc_Tape_out_week_1/blob/main/Day_4/blocking_caveat_gls.png?raw=true)
+![image alt](https://github.com/GOKUL-D-10/SoC_Tapeout_Week1/blob/main/Day%204/images/blocking_caveat_gls.png)
 
 - Include **primitive and standard cell models** for accurate GLS.  
 - `blocking_caveat_net.v` → Synthesized netlist as the **DUT**.  
